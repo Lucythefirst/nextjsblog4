@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@snowplow/browser-tracker": "^3.3.0",
     "date-fns": "^2.23.0",
     "gray-matter": "^4.0.3",
     "next": "^11.0.0",

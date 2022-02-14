@@ -3,6 +3,14 @@ import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
 import Date from '../../components/date'
 import utilStyles from '../../styles/utils.module.css'
+import { newTracker, enableActivityTracking, trackPageView } from "@snowplow/browser-tracker";
+
+enableActivityTracking({
+  minimumVisitLength: 30,
+  heartbeatDelay: 10
+});
+
+trackPageView();
 
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id)

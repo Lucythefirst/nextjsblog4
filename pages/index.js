@@ -4,6 +4,19 @@ import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
+import { newTracker,enableActivityTracking, trackPageView } from "@snowplow/browser-tracker";
+
+newTracker('sp1', 'http://localhost:9090', {
+  appId: 'my-app-id',
+  plugins: [ ],
+})
+
+enableActivityTracking({
+  minimumVisitLength: 30,
+  heartbeatDelay: 10
+});
+
+trackPageView();
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
